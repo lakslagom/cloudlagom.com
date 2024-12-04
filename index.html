@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudlagom - Just the Right Amount of Cloud</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .floating-clouds {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .cloud {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateX(-100%) translateY(0);
+            }
+            to {
+                transform: translateX(100vw) translateY(0);
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #a0a0a0;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            color: #d0d0d0;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .coming-soon {
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            animation: pulse 2s infinite;
+        }
+
+        .social-links {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 1.5s both;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            .tagline {
+                font-size: 1.2rem;
+            }
+            .description {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-clouds">
+        <i class="fas fa-cloud cloud" style="top: 10%; animation-duration: 25s;"></i>
+        <i class="fas fa-cloud cloud" style="top: 30%; animation-duration: 20s; animation-delay: 2s;"></i>
+        <i class="fas fa-cloud cloud" style="top: 50%; animation-duration: 22s; animation-delay: 5s;"></i>
+        <i class="fas fa-cloud cloud" style="top: 70%; animation-duration: 18s; animation-delay: 7s;"></i>
+    </div>
+    
+    <div class="container">
+        <h1 class="logo">Cloudlagom</h1>
+        <h2 class="tagline">Perfectly Balanced Cloud Solutions</h2>
+        <p class="description">
+            Introducing Cloudlagom, where Swedish "lagom" philosophy meets cutting-edge cloud technology. 
+            We're revolutionizing cloud computing by delivering precisely optimized solutions that 
+            maximize efficiency while minimizing complexity. Experience the perfect equilibrium of 
+            power, scalability, and simplicity.
+        </p>
+        <div class="coming-soon">
+            Transforming the Future of Cloud Computing | Launching Soon
+        </div>
+        <div class="social-links">
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+
+    <script>
+        // Add dynamic cloud generation
+        function createCloud() {
+            const cloud = document.createElement('i');
+            cloud.className = 'fas fa-cloud cloud';
+            cloud.style.top = Math.random() * 100 + '%';
+            cloud.style.animationDuration = (15 + Math.random() * 15) + 's';
+            cloud.style.opacity = 0.1;
+            document.querySelector('.floating-clouds').appendChild(cloud);
+
+            cloud.addEventListener('animationend', () => {
+                cloud.remove();
+            });
+        }
+
+        // Create new clouds periodically
+        setInterval(createCloud, 10000);
+
+        // Initial clouds
+        for (let i = 0; i < 3; i++) {
+            createCloud();
+        }
+    </script>
+</body>
+</html> 
